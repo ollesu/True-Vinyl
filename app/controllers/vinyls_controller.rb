@@ -1,5 +1,5 @@
-class VinylsController < ApplicationController
-
+  class VinylsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_vinyl, only: [:show, :create, :edit, :destroy]
 
   def index

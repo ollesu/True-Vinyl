@@ -1,1 +1,14 @@
-<h1>Hello</h1>
+<h1> testing</h1>
+<% @vinyls.each do |vinyl| %>
+  <%= link_to vinyl_path(vinyl) do %>
+    <%#= cl_image_tag vinyl.photo, height: 300, width: 400, crop: fill %>
+    <%= vinyl.photo %>
+    <% end %>
+  <%= vinyl.seller_id %>
+   <%= link_to vinyl_path(vinyl) do %>
+    <%= vinyl.name %>
+  <% end %>
+  <%= vinyl.artist %>
+  <%= vinyl.price %>
+  <br>
+<% end %>

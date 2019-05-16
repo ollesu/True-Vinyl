@@ -1,0 +1,22 @@
+<div class="container-1">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <h1>Upload a Vinyl</h1>
+      <%= simple_form_for [@vinyl, @user] do |f| %>
+      <%= f.input :name, label: "Title" %>
+      <%= f.input :genre, label: "Genre" %>
+      <%= f.input :price, label: "Price" %>
+      <%= f.input :artist, label: "Artist" %>
+      <%= f.input :year, label: "Release year" %>
+      <%= f.input :media_link, label: "Media link" %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.input :condition, label: "Condition" %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

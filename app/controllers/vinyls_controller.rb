@@ -15,6 +15,7 @@
 
   def create
     @vinyl = Vinyl.new(vinyl_params)
+    # seller_id = current.user
     if @vinyl.save
       redirect_to vinyl_path(@vinyl)
     else

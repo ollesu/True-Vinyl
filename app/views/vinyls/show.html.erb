@@ -15,10 +15,24 @@
       <h1><%= @vinyl.name %></h1>
       <h2><%= @vinyl.artist %></h2>
       <p><%= @vinyl.media_link %></p>
-      <p><%= @vinyl.year %></p>
-      <p><%= @vinyl.genre %></p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;  grid-gap: 8px; line-height: 0.7em; padding-bottom: 5px; ">
+        <div style="border-left: 1px solid grey; padding-left: 8px; justify-content:center; ">
+          <p style="color: light-grey;"><strong>Year</strong></p>
+          <p><%= @vinyl.year %></p>
+        </div>
+        <div style="border-left: 1px solid grey; padding-left: 8px;">
+          <p style="color: light-grey;"><strong>Genre</strong></p>
+          <p><%= @vinyl.genre %></p>
+        </div>
+        <div style="border-left: 1px solid grey; padding-left: 8px;">
+          <p style="color: light-grey;"><strong>Condition</strong></p>
+          <p><%= @vinyl.condition %></p>
+        </div>
+
+      </div>
+
       <p><%= @vinyl.description %></p>
-      <p><%= @vinyl.condition %></p>
 
       <% if policy(@vinyl).edit? %>
         <%= link_to "Update", edit_vinyl_path(@vinyl), class: 'btn btn-primary'%>

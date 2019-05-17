@@ -33,6 +33,7 @@
     end
 
     def edit
+      authorize @vinyl
     end
 
     def update

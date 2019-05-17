@@ -29,6 +29,10 @@ class VinylPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    true
+  end
+
   private
 
   def is_user_owner_or_admin?

@@ -11,7 +11,7 @@
     else
       @vinyls = Vinyl.all
     end
-    
+
   end
 
   def show
@@ -58,7 +58,7 @@
 
   def vinyl_params
     params.require(:vinyl).permit(:name, :genre, :price, :artist, :year, :description,
-      :condition, :photo, :seller_id)
+      :condition, :media_link, :photo, :seller_id)
   end
 end
 

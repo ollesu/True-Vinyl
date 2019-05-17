@@ -1,1 +1,30 @@
-<h1></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <h1>Hi, I'm <%= @user.first_name %></h1>
+  <!-- <h2><%= @user.address %></h2>
+   -->
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+      elit. Aenean commodo ligula eget dolor. Aenean massa
+      <strong>strong</strong>. Cum sociis natoque penatibus
+      et magnis dis parturient montes, nascetur ridiculus
+      mus. </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <p><%= cl_image_tag @user.photo, crop: :fill, class: "avatar-user-page" %></p>
+      <p> Selling since <%= @user.created_at %></p>
+      <h2> <%= @user.first_name %> 's Reviews </h2>
+    </div>
+</div>
+  <p><%= link_to "Sell vinyl", new_vinyl_path, class: 'btn btn-primary' %></p>
+</div>
+
+<% @user.vinyls.each do |vinyl| %>
+  <%= vinyl.name %>
+<% end %>

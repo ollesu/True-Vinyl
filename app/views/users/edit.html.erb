@@ -1,0 +1,15 @@
+<div class="container-1">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <h1>Edit profile</h1>
+      <%= simple_form_for [@user] do |f| %>
+      <%= f.input :first_name, label: "First name" %>
+      <%= f.input :last_name, label: "Last name"%>
+      <%= f.input :email, label: "Email address" %>
+      <%= f.input :address, label: "Address" %>
+      <%= f.input :photo %>
+      <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

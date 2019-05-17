@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  resources :users, only: :show do
+    resources :reviews, only: :index
+  end
+
   resources :vinyls do
     collection do
       get "order", to: "vinyls#order"
@@ -9,5 +13,7 @@ Rails.application.routes.draw do
     resources :purchases, only: [:create]
   end
   # get "users/:id/reviews", to: "reviews#index"
-  resources :purchases, only: [:show]
+  resources :purchases, only: [:show] do
+    resources :reviews, only: :show
+  end
 end

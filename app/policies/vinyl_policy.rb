@@ -25,10 +25,13 @@ class VinylPolicy < ApplicationPolicy
     is_user_owner_or_admin?
   end
 
+  def order?
+    true
+  end
+
   private
 
   def is_user_owner_or_admin?
-    record.user == user || user&.admin
+    record.seller == user || user&.admin
   end
-
 end

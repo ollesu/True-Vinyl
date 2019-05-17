@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :vinyls do
-    collection do
+    member do
       get "order", to: "vinyls#order"
     end
     resources :purchases, only: [:create]

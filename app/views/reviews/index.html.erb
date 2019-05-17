@@ -1,0 +1,6 @@
+<h1>User Reviews For <%= @user.name %></h1>
+
+<% @reviews.each do |review| %>
+  <p><%= @review.content %></p>
+  <p><%= @review.rating %></p>
+  <% end %>

@@ -1,6 +1,6 @@
   class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_vinyl, only: [:show, :create, :edit, :destroy]
+  before_action :find_vinyl, only: [:show, :edit, :destroy]
 
   def index
     @vinyls = Vinyl.all
@@ -15,7 +15,7 @@
 
   def create
     @vinyl = Vinyl.new(vinyl_params)
-    # seller_id = current.user
+    @vinyl.user = current_user
     if @vinyl.save
       redirect_to vinyl_path(@vinyl)
     else

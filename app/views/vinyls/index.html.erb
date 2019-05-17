@@ -12,13 +12,11 @@
     <p><%= cl_image_tag vinyl.photo, height: 300, width: 400, crop: :fill %></p>
     <% end %>
   <%= vinyl.seller_id %>
-   <%= link_to vinyl_path(vinyl) do %>
+  <%= link_to vinyl_path(vinyl) do %>
     <%= vinyl.name %>
   <% end %>
   <%= vinyl.artist %>
   <%= vinyl.price %>
   <br>
-<% end %>
-
-
+  <% end %>
 

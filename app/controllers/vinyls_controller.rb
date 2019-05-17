@@ -3,12 +3,15 @@
   before_action :find_vinyl, only: [:show, :edit, :destroy]
 
   def index
-    # @vinyls = Vinyl.all
+    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+    # add this line if you want to have a seperate index
+    # for each individual user: .where(user: current_user)
     if params[:query].present?
       @vinyls = Vinyl.where("name ILIKE ?", "%#{params[:query]}%")
     else
       @vinyls = Vinyl.all
     end
+    
   end
 
   def show
@@ -16,11 +19,13 @@
 
   def new
     @vinyl = Vinyl.new
+    authorize @vinyl
   end
 
   def create
     @vinyl = Vinyl.new(vinyl_params)
     @vinyl.user = current_user
+    authorize @vinyl
     if @vinyl.save
       redirect_to vinyl_path(@vinyl)
     else
@@ -48,6 +53,7 @@
 
   def find_vinyl
     @vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
   end
 
   def vinyl_params

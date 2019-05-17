@@ -1,7 +1,10 @@
-<%#= cl_image_tag @vinyl.photo, height: 300, width: 400, crop: fill %>
+ <% if policy(Vinyl).new? %>
+  <%= link_to 'Add a vinyl', new_vinyl_path, class: 'btn btn-success' %>
+  <% end %>
+
 <p><%= @vinyl.name %></p>
-<p><%= @vinyl.photo %></p>
-<p><%= @vinyl.sold %></p>
+<p><%= cl_image_tag @vinyl.photo, height: 300, width: 400, crop: :fill %></p>
+<p>available: <%= @vinyl.sold %>
 <p><%= @vinyl.seller_id %></p>
 <p><%= @vinyl.media_link %></p>
 <p><%= @vinyl.artist %></p>
@@ -10,3 +13,12 @@
 <p><%= @vinyl.genre %></p>
 <p><%= @vinyl.description %></p>
 <p><%= @vinyl.condition %></p>
+
+<% if policy(@vinyl).edit? %>
+  <%= link_to "Update", edit_vinyl_path(@vinyl), class: 'btn btn-primary'%>
+
+  <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, class: 'btn btn-primary' %>
+<% end %>
+<%= link_to "Homepage", vinyls_path, class: 'btn btn-primary' %>
+=======
+<%= link_to 'Back to homepage', vinyls_path, class: "btn btn-primary" %>

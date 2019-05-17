@@ -6,6 +6,12 @@
     @vinyls = policy_scope(Vinyl).order(created_at: :desc)
     # add this line if you want to have a seperate index
     # for each individual user: .where(user: current_user)
+    if params[:query].present?
+      @vinyls = Vinyl.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @vinyls = Vinyl.all
+    end
+    
   end
 
   def show

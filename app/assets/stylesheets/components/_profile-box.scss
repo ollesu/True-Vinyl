@@ -1,0 +1,10 @@
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid grey;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}

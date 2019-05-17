@@ -4,6 +4,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-top-right-radius: 20px;
   border: 2px solid #F7CA2F;
+  transition: 0.4s ease;
+}
+.card-full:hover {
+  border: 2px solid #00BCD3;
 }
 
 .card-full > img {

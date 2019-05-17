@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/show'
   devise_for :users
   root to: 'pages#home'
 
-  resources :vinyls
-
-  # resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :vinyls do
+    collection do
+      get "order", to: "vinyls#order"
+    end
+    resources :purchases, only: [:create]
+  end
+  # get "users/:id/reviews", to: "reviews#index"
+  resources :purchases, only: [:show]
 end

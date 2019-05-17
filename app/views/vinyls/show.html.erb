@@ -1,24 +1,60 @@
- <% if policy(Vinyl).new? %>
-  <%= link_to 'Add a vinyl', new_vinyl_path, class: 'btn btn-success' %>
-  <% end %>
 
-<p><%= @vinyl.name %></p>
-<p><%= cl_image_tag @vinyl.photo, height: 300, width: 400, crop: :fill %></p>
-<p>available: <%= @vinyl.sold %>
-<p><%= @vinyl.seller_id %></p>
-<p><%= @vinyl.media_link %></p>
-<p><%= @vinyl.artist %></p>
-<p><%= @vinyl.price %></p>
-<p><%= @vinyl.year %></p>
-<p><%= @vinyl.genre %></p>
-<p><%= @vinyl.description %></p>
-<p><%= @vinyl.condition %></p>
 
-<% if policy(@vinyl).edit? %>
-  <%= link_to "Update", edit_vinyl_path(@vinyl), class: 'btn btn-primary'%>
 
-  <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, class: 'btn btn-primary' %>
-<% end %>
-<%= link_to "Homepage", vinyls_path, class: 'btn btn-primary' %>
-=======
-<%= link_to 'Back to homepage', vinyls_path, class: "btn btn-primary" %>
+<div class="container" style="margin-top: 10px; margin-bottom: 20px">
+
+  <div class="vinyl">
+
+    <div class= "vinyl-image">
+      <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+    </div>
+
+    <div class="vinyl-description">
+
+
+      <h1><%= @vinyl.name %></h1>
+      <h2><%= @vinyl.artist %></h2>
+      <p><%= @vinyl.media_link %></p>
+      <p><%= @vinyl.year %></p>
+      <p><%= @vinyl.genre %></p>
+      <p><%= @vinyl.description %></p>
+      <p><%= @vinyl.condition %></p>
+
+      <% if policy(@vinyl).edit? %>
+        <%= link_to "Update", edit_vinyl_path(@vinyl), class: 'btn btn-primary'%>
+        <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, class: 'btn btn-primary' %>
+      <% end %>
+      <% if policy(Vinyl).new? %>
+        <%= link_to 'Add a vinyl', new_vinyl_path, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+
+    <div class="profile-box">
+      <div>
+        <h2 style="color: #FA2B57"><strong>£<%= @vinyl.price %></strong></h2>
+
+        <%= link_to "buy now", edit_vinyl_path(@vinyl), class: 'btn btn-danger'%>
+
+      </div>
+      <div>
+        <hr>
+      </div>
+      <div>
+        <img class="avatar-bordered" alt="avatar-bordered" style="width: 76px" src="https://kitt.lewagon.com/placeholder/users/kierand0yle" />
+
+        <h3>Kieran</h3>
+
+        <div style="color: #FA2B57">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+
+        <p>42 reviews</p>
+        <p>Selling since 2019</p>
+      </div>
+    </div>
+  </div>
+</div>

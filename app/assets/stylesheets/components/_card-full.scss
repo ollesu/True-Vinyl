@@ -1,0 +1,47 @@
+.card-full {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-top-right-radius: 20px;
+  border: 2px solid #F7CA2F;
+  transition: 0.4s ease;
+}
+.card-full:hover {
+  border: 2px solid #00BCD3;
+}
+
+.card-full > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-full h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-full p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-full .card-full-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+
+
+}
+
+.card-full-infos .card-full-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}

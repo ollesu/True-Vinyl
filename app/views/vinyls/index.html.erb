@@ -1,8 +1,15 @@
-<h1> testing</h1>
+<h1> True Vinyl</h1>
+
+<%= form_tag vinyls_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for a vinyl name" %>
+<% end %>
+
 <% @vinyls.each do |vinyl| %>
   <%= link_to vinyl_path(vinyl) do %>
-    <%#= cl_image_tag vinyl.photo, height: 300, width: 400, crop: fill %>
-    <%= vinyl.photo %>
+    <p><%= cl_image_tag vinyl.photo, height: 300, width: 400, crop: :fill %></p>
     <% end %>
   <%= vinyl.seller_id %>
    <%= link_to vinyl_path(vinyl) do %>

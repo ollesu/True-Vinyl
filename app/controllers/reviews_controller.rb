@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :find_purchase, only: [:new, :create]
 
+  def index
+    @user = User.find(params[:user_id])
+    @reviews = Review.all
+  end
+
   def new
     @review = Review.new
   end

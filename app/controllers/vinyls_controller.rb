@@ -3,7 +3,12 @@
   before_action :find_vinyl, only: [:show, :edit, :destroy]
 
   def index
-    @vinyls = Vinyl.all
+    # @vinyls = Vinyl.all
+    if params[:query].present?
+      @vinyls = Vinyl.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @vinyls = Vinyl.all
+    end
   end
 
   def show

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_162548) do
+
+ActiveRecord::Schema.define(version: 2019_05_17_163214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_162548) do
     t.bigint "vinyl_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "buyer_id"
     t.text "review"
     t.string "name"
     t.string "house_number"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_05_17_162548) do
     t.integer "card_number"
     t.integer "expiry_date"
     t.integer "security_code"
+    t.bigint "buyer_id"
+    t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
     t.index ["vinyl_id"], name: "index_purchases_on_vinyl_id"
   end
 
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_162548) do
     t.string "last_name"
     t.string "address"
     t.boolean "admin", default: false
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -70,8 +73,11 @@ ActiveRecord::Schema.define(version: 2019_05_17_162548) do
     t.string "media_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "seller_id"
+    t.bigint "seller_id"
+    t.index ["seller_id"], name: "index_vinyls_on_seller_id"
   end
 
+  add_foreign_key "purchases", "users", column: "buyer_id"
   add_foreign_key "purchases", "vinyls"
+  add_foreign_key "vinyls", "users", column: "seller_id"
 end

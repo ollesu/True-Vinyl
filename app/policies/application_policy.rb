@@ -2,7 +2,7 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    # - record: the vinyl passed to the `authorize` method in controller
+    # - record: the vinyl or anything passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
     @user = user
     @record = record

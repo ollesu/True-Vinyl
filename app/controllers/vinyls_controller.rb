@@ -59,7 +59,6 @@
     @purchase = Purchase.new
   end
 
-  private
     def update
       @vinyl.update(vinyl_params)
       if @vinyl.save

@@ -39,6 +39,40 @@
   }
 }
 
+.user {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  // height: 400px;
+  grid-template-rows: 400px 1fr;
+}
+
+
+.user-description {
+  width: 300px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.user-records-reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.user-cards {
+  display: grid;
+  // grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.reviews {
+  padding: 10px;
+  margin: 20px;
+}
+
 .order-summary {
   align-self: flex-start;
 }

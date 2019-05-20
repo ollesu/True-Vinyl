@@ -11,6 +11,14 @@
   width: 40px;
 }
 
+.logo {
+  transition: 0.5s ease;
+}
+
+.logo:hover {
+  transform: rotate(180deg);
+}
+
 // .navbar-search {
 //   flex-grow: 1;
 //   align-content: flex-start;

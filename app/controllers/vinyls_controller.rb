@@ -1,35 +1,16 @@
-  class VinylsController < ApplicationController
+class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
   def index
-      @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-      # add this line if you want to have a seperate index
-      # for each individual user: .where(user: current_user)
-      if params[:query].present?
-        sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
-        @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
-      else
-        @vinyls = Vinyl.where(sold: false)
-      end
-  end
-
-  def show
-  end
-
-  def new
-    @vinyl = Vinyl.new
-    authorize @vinyl
-  end
-
-  def create
-    @vinyl = Vinyl.new(vinyl_params)
-    @vinyl.seller = current_user
-    authorize @vinyl
-    if @vinyl.save
-      redirect_to vinyl_path(@vinyl)
+    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+    # add this line if you want to have a seperate index
+    # for each individual user: .where(user: current_user)
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
+      @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
     else
-      render :new
+      @vinyls = Vinyl.where(sold: false)
     end
   end
 
@@ -51,6 +32,25 @@
       render :new
     end
   end
+
+  def show
+  end
+
+  def new
+    @vinyl = Vinyl.new
+    authorize @vinyl
+  end
+
+  # def create
+  #   @vinyl = Vinyl.new(vinyl_params)
+  #   @vinyl.seller = current_user
+  #   authorize @vinyl
+  #   if @vinyl.save
+  #     redirect_to vinyl_path(@vinyl)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def edit
     authorize @vinyl

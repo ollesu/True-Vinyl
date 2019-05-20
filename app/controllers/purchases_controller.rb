@@ -6,11 +6,8 @@ class PurchasesController < ApplicationController
     @purchase.buyer_id = current_user
     @vinyl.sold = true
     authorize @purchase
-    raise
     if @purchase.save
       redirect_to purchase_path(@purchase)
-    else
-
     end
     @purchase.save
   end

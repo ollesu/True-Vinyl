@@ -13,6 +13,25 @@
       end
     end
 
+  def show
+  end
+
+  def new
+    @vinyl = Vinyl.new
+    authorize @vinyl
+  end
+
+  def create
+    @vinyl = Vinyl.new(vinyl_params)
+    @vinyl.seller = current_user
+    authorize @vinyl
+    if @vinyl.save
+      redirect_to vinyl_path(@vinyl)
+    else
+      render :new
+    end
+  end
+
     def show
     end
 
@@ -36,6 +55,11 @@
       authorize @vinyl
     end
 
+  def order
+    @purchase = Purchase.new
+  end
+
+  private
     def update
       @vinyl.update(vinyl_params)
       if @vinyl.save
@@ -44,6 +68,7 @@
         render :edit
       end
     end
+
 
     def destroy
       @vinyl.destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_163214) do
+ActiveRecord::Schema.define(version: 2019_05_20_133731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 2019_05_17_163214) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "review"
-    t.bigint "buyer_id"
     t.string "name"
     t.string "house_number"
     t.string "street_name"
     t.string "post_code"
     t.string "city"
     t.string "card_holder"
-    t.integer "card_number"
+    t.string "card_number"
     t.integer "expiry_date"
     t.integer "security_code"
+    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
     t.index ["vinyl_id"], name: "index_purchases_on_vinyl_id"
   end

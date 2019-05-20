@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6 offset-sm-3">
       <h1>Upload a Vinyl</h1>
-      <%= simple_form_for [@vinyl, @user] do |f| %>
+      <%= simple_form_for [@vinyl] do |f| %>
       <%= f.input :name, label: "Title" %>
       <%= f.input :genre, label: "Genre", collection: ["Avant-Garde", "Blues", "Classical", "Comedy/Spoken", "Country", "Electronic", "Folk", "International", "Jazz", "Latin", "New Age", "Pop/Rock", "R&B", "Rap", "Raggae" ]%>
       <%= f.input :price, label: "Price (£)" %>

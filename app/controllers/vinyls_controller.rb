@@ -1,6 +1,6 @@
   class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_vinyl, only: [:show, :edit, :destroy, :order]
+  before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
     def index
       @vinyls = policy_scope(Vinyl).order(created_at: :desc)
@@ -42,7 +42,7 @@
 
     def create
       @vinyl = Vinyl.new(vinyl_params)
-      @vinyl.user = current_user
+      @vinyl.seller = current_user
       authorize @vinyl
       if @vinyl.save
         redirect_to vinyl_path(@vinyl)
@@ -52,6 +52,7 @@
     end
 
     def edit
+      authorize @vinyl
     end
 
   def order
@@ -71,6 +72,10 @@
 
     def destroy
       @vinyl.destroy
+    end
+
+    def order
+      @purchase = Purchase.new
     end
 
     private

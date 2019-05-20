@@ -7,19 +7,19 @@
       <br>
       <h2>Delivery Address</h2>
       <%= simple_form_for [@vinyl, @purchase] do |f| %>
-      <%= f.input :name, label: "Name" %>
-      <%= f.input :house_number, label: "House/Flat Number" %>
-      <%= f.input :street_name, label: "Street Name" %>
-      <%= f.input :city, label: "City" %>
-      <%= f.input :post_code, label: "Post Code" %>
+        <%= f.input :name, label: "Name" %>
+        <%= f.input :house_number, label: "House/Flat Number" %>
+        <%= f.input :street_name, label: "Street Name" %>
+        <%= f.input :city, label: "City" %>
+        <%= f.input :post_code, label: "Post Code" %>
       <br>
       <br>
       <br>
       <h2>Payment Details</h2>
-      <%= f.input :card_holder, label: "Card Holder Name" %>
-      <%= f.input :card_number, label: "Card Number" %>
-      <%= f.input :expiry_date, label: "Expiry Date" %>
-      <%= f.input :security_code, label: "Security Code" %>
+        <%= f.input :card_holder, label: "Card Holder Name" %>
+        <%= f.input :card_number, label: "Card Number" %>
+        <%= f.input :expiry_date, label: "Expiry Date" %>
+        <%= f.input :security_code, label: "Security Code" %>
 
         <%= f.submit class: "btn btn-primary"%>
       <% end %>

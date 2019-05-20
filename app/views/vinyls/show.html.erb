@@ -3,7 +3,11 @@
   <div class="vinyl">
 
     <div class= "vinyl-image">
-      <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+      <% if @vinyl.photo.nil? %>
+        NO IMAGE
+      <% else %>
+        <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+      <% end %>
     </div>
 
     <div class="vinyl-description">

@@ -1,1 +1,28 @@
-<h1>Your order is confirmed</h1>
+<div class= "d-flex p-4 bg-light border-bottom align-items-center justify-content-between">
+  <h1>Thank you for your order</h1>
+  <div class="container">
+    <h2><%= "Order Number: " @purchase.id %></h2>
+    <hr>
+    <p>We are currently processing your order and we will email you with confirmation shortly.</p>
+    <p>For your convenience you may want to save your order confirmation</p>
+    <br>
+    <h2>Delivery Details</h2>
+    <hr>
+    <h3>Delivery for</h3>
+    <p><%= "Name: ", @purchase.name %></p>
+    <br>
+    <p><%= "Address: ", @purchase.house_number, " ", @purchase.street_name, ", ", @purchase.city, ", ", @purchase.post_code%></p>
+    <br>
+    <h2>Payment Information</h2>
+    <hr>
+    <h3>Credit Card</h3>
+    <p><%= "Card Number: ", @purchase.card_number %></p>
+    <p><%= "Expiry Date: ", @purchase.expiry_date %></p>
+  </div>
+  <div>
+    <h2>Order Summary</h2>
+    <hr>
+    <p><%= @vinyl.name %></p>
+    <p><%= @vinyl.price %></p>
+  </div>
+</div>

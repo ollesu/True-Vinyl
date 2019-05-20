@@ -10,7 +10,7 @@
         sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
         @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
       else
-        @vinyls = Vinyl.all
+        @vinyls = Vinyl.where(sold: false)
       end
   end
 

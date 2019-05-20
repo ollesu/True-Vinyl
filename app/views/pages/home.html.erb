@@ -2,61 +2,28 @@
 
 <div class="container" style="text-align: center; margin-top: 10px; margin-bottom: 20px">
   <br>
+
+  <br>
   <h2>Get inspired by current records on sale</h2>
   <br>
+
   <div class="cards">
-    <div class="square-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "beatles.jpg" %>')">
-      Vinyl 1
-    </div>
-
-    <div class="square-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "beatles.jpg" %>')">
-      Vinyl 2
-    </div>
-
-    <div class="square-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "beatles.jpg" %>')">
-      Vinyl 3
-    </div>
+    <% @vinyls.each do |vinyl| %>
+      <%= link_to vinyl_path(vinyl) do %>
+        <div class="card-full">
+          <div class="card-full-infos">
+            <div>
+              <h2><%= vinyl.name %></h2>
+              <p><%= vinyl.artist %></p>
+            </div>
+            <h2 class="card-full-pricing">£ <%= vinyl.price %></h2>
+          </div>
+            <%= cl_image_tag vinyl.photo %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
-<div class="container" style="text-align: center; margin-top: 10px; margin-bottom: 20px">
-  <br>
-  <h2>Get inspired by our full card component</h2>
-  <br>
-  <div class="cards">
-
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
-    </div>
-
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
-    </div>
-
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
-    </div>
-  </div>
 </div>
 
 </div>

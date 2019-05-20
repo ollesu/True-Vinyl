@@ -25,6 +25,11 @@
   grid-gap: 16px;
 }
 
+.cards a {
+  text-decoration: none;
+  color: black;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

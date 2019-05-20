@@ -3,14 +3,15 @@
   before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
   def index
-    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-    # add this line if you want to have a seperate index
-    # for each individual user: .where(user: current_user)
-    if params[:query].present?
-      @vinyls = Vinyl.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      @vinyls = Vinyl.all
-    end
+      @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+      # add this line if you want to have a seperate index
+      # for each individual user: .where(user: current_user)
+      if params[:query].present?
+        sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
+        @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
+      else
+        @vinyls = Vinyl.all
+      end
   end
 
   def show

@@ -7,7 +7,8 @@
       # add this line if you want to have a seperate index
       # for each individual user: .where(user: current_user)
       if params[:query].present?
-        @vinyls = Vinyl.where("name ILIKE ?", "%#{params[:query]}%")
+        sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
+        @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
       else
         @vinyls = Vinyl.all
       end

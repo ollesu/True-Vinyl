@@ -1,22 +1,19 @@
 <div class="container" style="margin-bottom: 20px">
 
-  <%= form_tag vinyls_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search for a vinyl name" %>
-  <% end %>
-
   <%= simple_form_for :search, url: vinyls_path, method: :get do |f| %>
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <input class="form-control string required" type="text" name="query" id="query" placeholder="<%= params[:query] %>" />
     <button name="button" type="submit" class="btn btn-flat">
       <!-- <i class="fas fa-search"></i> --> <i class="fas fa-compact-disc"></i> Search vinyls
     </button>
   </div>
 <% end %>
 
-  <h1>Displaying Results</h1>
+  <% if params[:query] %>
+    <h1>Search results for <%= params[:query] %></h1>
+    <% else %>
+    <h1>Showing all records</h1>
+  <% end %>
 
   <div class="cards">
     <% @vinyls.each do |vinyl| %>

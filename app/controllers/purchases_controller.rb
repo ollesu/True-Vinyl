@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def create
-    @purchase = Purchase.new
+    @purchase = Purchase.new(purchase_params)
     @vinyl = Vinyl.find(params[:vinyl_id])
     @purchase.vinyl = @vinyl
     @purchase.buyer_id = current_user.id

@@ -55,8 +55,11 @@
         <hr>
       </div>
       <div>
-        <p><%= cl_image_tag @vinyl.seller.photo, class: "avatar-user-page"%></p>
-
+        <% if @vinyl.photo.nil? %>
+          NO IMAGE
+        <% else %>
+          <p><%= cl_image_tag @vinyl.seller.photo, class: "avatar-user-page"%></p>
+        <% end %>
 
         <h3> <%= @vinyl.seller.first_name %></h3>
 

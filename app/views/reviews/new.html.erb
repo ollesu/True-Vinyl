@@ -1,11 +1,17 @@
-<h1>Rate your experience</h1>
+<h1 class="text-center">Rate your experience with <%= @purchase.vinyl.seller.first_name %> <%= @purchase.vinyl.seller.last_name %></h1>
+<br>
+<br>
+<h2 class="text-center"><%= @purchase.vinyl.name %></h2>
+<br>
+<h1 class="text-center"><%= cl_image_tag @purchase.vinyl.photo, height: 300, width: 300 , crop: :fill  %></h1>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3">
       <%= simple_form_for [@purchase, @review] do |f| %>
         <%= f.input :content %>
         <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
-        <%= f.submit "Submit Review" class: "btn btn-primary" %>
+        <%= f.submit "Submit Review", class: "btn btn-primary m-3" %>
       <% end %>
     </div>
   </div>

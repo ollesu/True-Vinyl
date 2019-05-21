@@ -8,7 +8,7 @@ class Purchase < ApplicationRecord
   validates :post_code, presence: true
   validates :city, presence: true
   validates :card_holder, presence: true
-  validates :card_number, presence: true, format: { with: /\d{4}\s?\d{4}\s?\d{4}\s?\d{4}/ }
+  validates :card_number, presence: true, format: { with: /\d{4}\s?\d{4}\s?\d{4}\s?\d{4}\z/ }
   validates :expiry_date, presence: true
   validates :security_code, presence: true
 end

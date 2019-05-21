@@ -4,6 +4,7 @@ class VinylsController < ApplicationController
 
   def index
     @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price))
+
   end
 
   def show

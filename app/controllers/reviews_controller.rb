@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :find_purchase, only: [:new, :create]
-
+  skip_after_action :verify_policy_scoped, only: :index
   def index
     @user = User.find(params[:user_id])
-    @reviews = Review.all
+    @reviews = @user.reviews
+    authorize @reviews
   end
 
   def new

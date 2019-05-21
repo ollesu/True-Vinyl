@@ -63,14 +63,3 @@ class VinylsController < ApplicationController
       :condition, :photo, :seller_id, :media_link)
   end
 end
-
-
-
-
-
-
-
-
-
-
-

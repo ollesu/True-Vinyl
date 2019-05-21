@@ -11,4 +11,8 @@ class Vinyl < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   validates :media_link, format: { with: /.*:album:.*|/ , message: "must be a Spotify Album URI" }
   validates :price, presence: true
+
+  def sold?
+    !purchase.nil?
+  end
 end

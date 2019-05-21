@@ -84,6 +84,9 @@
             <div>
               <h2><%= vinyl.name %></h2>
               <p><%= vinyl.artist %></p>
+              <% if vinyl.sold? %>
+              <p>Sold</p>
+            <% end %>
             </div>
             <h2 class="card-full-pricing">£ <%= '%.2f' % vinyl.price %></h2>
           </div>

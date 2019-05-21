@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.svg" %><span style="padding-left: 16px;">True Vinyl</span>
+    <%= image_tag "logo.svg", class: "logo"%><span style="padding-left: 16px;">True Vinyl</span>
     <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,6 +23,7 @@
             <%= link_to current_user&.email, user_path(current_user), class: "dropdown-item" %>
             <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "My Vinyls", vinyls_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "My Purchases", user_purchases_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

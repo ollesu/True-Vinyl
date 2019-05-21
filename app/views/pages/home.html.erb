@@ -1,10 +1,10 @@
 <%= render 'shared/banner' %>
 
-<div class="container" style="text-align: center; margin-top: 10px; margin-bottom: 20px">
+<div class="container" style="margin-top: 10px; margin-bottom: 20px">
   <br>
 
   <br>
-  <h2>Get inspired by latest records on sale</h2>
+  <h2 style= "text-align: center;">Get inspired by latest records on sale</h2>
   <br>
 
   <div class="cards">
@@ -24,8 +24,9 @@
     <% end %>
   </div>
   <br>
-  <%= link_to "Browse all", vinyls_path(@vinyl), class: 'btn btn-flat', style: 'color:white;'%>
-
+  <div style= "text-align: center;">
+    <%= link_to "Browse all", vinyls_path(@vinyl), class: 'btn btn-flat', style: 'color:white;'%>
+  </div>
 </div>
 
 </div>

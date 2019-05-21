@@ -8,13 +8,15 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
     @review.purchase = @purchase
-    if review.save
-      redirect_to purchase_path(@purchase)
+    authorize @review
+    if @review.save!
+      redirect_to purchase_review_path(@purchase, @review)
     else
       render :new
     end
@@ -22,6 +24,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    authorize @review
   end
 
   private

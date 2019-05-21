@@ -26,10 +26,28 @@
   padding: 8px 24px;
   border-radius: 4px;
   background: #FA2B57;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
 }
+
+// .btn-flat i:hover {
+//   transform: rotate(180deg);
+// }
 
 .btn-flat:hover {
   background: #C4C4C4;
   color: white;
+  &i {
+    transform: rotate(180deg);
+  }
 }
+
+#search-button {
+  position: static;
+  height: 3.5rem;
+}
+
+#drop-down {
+  color: #6C757D;
+  width: 200px;
+}
+

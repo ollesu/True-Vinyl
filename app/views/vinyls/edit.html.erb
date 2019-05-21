@@ -4,11 +4,11 @@
       <h1>Upload a Vinyl</h1>
       <%= simple_form_for [@vinyl] do |f| %>
       <%= f.input :name, label: "Title" %>
+      <%= f.input :artist, label: "Artist" %>
       <%= f.input :genre, label: "Genre", collection: ["Avant-Garde", "Blues", "Classical", "Comedy/Spoken", "Country", "Electronic", "Folk", "International", "Jazz", "Latin", "New Age", "Pop/Rock", "R&B", "Rap", "Raggae" ]%>
       <%= f.input :price, label: "Price (£)" %>
-      <%= f.input :artist, label: "Artist" %>
       <%= f.input :year, label: "Release year" %>
-      <%= f.input :media_link, label: "Media link" %>
+      <%= f.input :media_link, label: "Media link", hint: "Paste a Spotify Album URI", placeholder: "e.g spotify:album:5WupqgR68HfuHt3BMJtgun" %>
       <%= f.input :description, label: "Description" %>
       <%= f.input :condition, label: "Condition", collection: ["New", "Used - Like New", "Used - Very Good", "Used - Good", "Used - Acceptable"]%>
       <%= f.input :photo %>

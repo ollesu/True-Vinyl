@@ -12,7 +12,7 @@
     <div></div>
     <div class="profile-box">
       <div>
-        <p><%= cl_image_tag(@user.photo, class: "avatar-bordered", :width => 100, :height => 100) %></p>
+        <p><%= cl_image_tag(@user.photo.url, class: "avatar-bordered", :width => 100, :height => 100) %></p>
         <hr>
          <% average_rating = 0 %>
           <% @user.reviews.each do |review| %>

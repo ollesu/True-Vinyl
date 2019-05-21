@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :reviews, through: :sells, source: :review
   has_many :purchases, :foreign_key => 'buyer_id', class_name: "Purchase"
   mount_uploader :photo, PhotoUploader
+
+
 end

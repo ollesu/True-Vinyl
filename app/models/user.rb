@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :vinyls, :foreign_key => 'seller_id', class_name: "Vinyl"
   has_many :purchases, :foreign_key => 'buyer_id', class_name: "Purchase"
   mount_uploader :photo, PhotoUploader
+
+
 end

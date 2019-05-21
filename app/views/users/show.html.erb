@@ -12,7 +12,7 @@
     <div></div>
     <div class="profile-box">
       <div>
-        <p><%= cl_image_tag(@user.photo, class: "avatar-bordered", :width => 100, :height => 100) %></p>
+        <p><%= cl_image_tag(@user.photo.url, class: "avatar-bordered", :width => 100, :height => 100) %></p>
         <hr>
         <div style="color: #FA2B57">
           <i class="fas fa-star"></i>

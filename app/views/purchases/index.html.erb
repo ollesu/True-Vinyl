@@ -1,0 +1,14 @@
+<h1 class="text-center">Your Recent Purchases</h1>
+<div class="container">
+  <div class= "d-flex p-4 bg-light border-bottom align-items-center justify-content-between m-3">
+    <div>
+      <% @purchases.each do |purchase| %>
+        <h2><%= cl_image_tag purchase.vinyl.photo, height: 150, width: 150, crop: :fill %></h2>
+        <%= link_to "Review Purchase", new_purchase_review_path(purchase), class: "btn btn-primary" %>
+        <h2> Purchase ID Number: <strong><%= purchase.id %></h2></strong>
+        <h2> Vinyl Name: <strong><%= purchase.vinyl.name %></h2></strong>
+        <h2> Seller Name: <strong><%= purchase.vinyl.seller.first_name %> <%= purchase.vinyl.seller.last_name %> </h2></strong>
+        <hr>
+      <% end %>
+  </div>
+</div>

@@ -1,4 +1,9 @@
 class PurchasesController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @purchases = policy_scope(Purchase).where(buyer_id: params[:user_id])
+  end
+
   def create
     @purchase = Purchase.new(purchase_params)
     @vinyl = Vinyl.find(params[:vinyl_id])

@@ -1,17 +1,9 @@
-  class VinylsController < ApplicationController
+class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
   def index
-      @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-      # add this line if you want to have a seperate index
-      # for each individual user: .where(user: current_user)
-      if params[:query].present?
-        sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
-        @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
-      else
-        @vinyls = Vinyl.where(sold: false)
-      end
+    @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price))
   end
 
   def show
@@ -50,6 +42,11 @@
     else
       render :edit
     end
+  end
+
+  def destroy
+    @vinyl.destroy
+    redirect_to vinyls_user_path(current_user)
   end
 
 

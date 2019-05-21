@@ -1,3 +1,11 @@
-<h1>Review for @purchase.review.name</h1>
-<p><%= @review.content %></p>
-<p><%= @review.rating %></p>
+<h1 class="text-center">Thank you for your review</h1>
+<hr>
+<br>
+<br>
+<div class="container">
+  <h1 class="text-center"><%= cl_image_tag @review.purchase.vinyl.photo, height: 300, width: 300 , crop: :fill  %></h1>
+  <br>
+  <h2 class="text-center"><%= @review.content %></h2>
+  <br>
+  <h2 class="text-center"><%= @review.rating %> stars</h2>
+</div>

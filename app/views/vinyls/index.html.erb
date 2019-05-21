@@ -1,9 +1,9 @@
 <div class="container" style="margin-bottom: 20px">
 
   <%= simple_form_for :search, url: vinyls_path, method: :get do |f| %>
-  <div class="search-form-control form-group form-inline">
-    <input class="form-control string required" type="text" name="named" id="query" placeholder="Title" onfocus="" onblur="" <%= params[:named] %> />
-    <input class="form-control string required" type="text" name="artist" id="artist" placeholder="Artist" placeholder="Title" onfocus="" onblur="" <%= params[:artist] %> />
+  <div class="search-form-control form-group form-inline" >
+    <input class="form-control string required" id=input-1 type="text" name="named" id="query" placeholder="Title" onfocus="" onblur="" <%= params[:named] %> />
+    <input class="form-control string required" id=input-2 type="text" name="artist" id="artist" placeholder="Artist" placeholder="Title" onfocus="" onblur="" <%= params[:artist] %> />
 
     <select name="genre" class="form-control string" id="drop-down">
       <option  value="">Genre</option>
@@ -22,8 +22,8 @@
       <option value="Rap">Rap</option>
       <option value="Raggae">Raggae</option>
     </select>
-    <input class="form-control string required" type="text" name="min_price" id="min_price" placeholder="Min Price" placeholder="Title" onfocus="" onblur="" <%= params[:min_price] %> />
-    <input class="form-control string required" type="text" name="max_price" id="max_price" placeholder=" Max Price" placeholder="Title" onfocus="" onblur=""<%= params[:max_price] %> />
+    <input class="form-control string required" id=input-3 type="text" name="min_price" id="min_price" placeholder="Min Price" placeholder="Title" onfocus="" onblur="" <%= params[:min_price] %> />
+    <input class="form-control string required" id=input-4 type="text" name="max_price" id="max_price" placeholder=" Max Price" placeholder="Title" onfocus="" onblur=""<%= params[:max_price] %> />
     <button name="button" type="submit" class="btn btn-flat" id="search-button">
      <i class="fas fa-compact-disc"></i> Search vinyls
     </button>

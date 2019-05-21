@@ -10,4 +10,8 @@ class Vinyl < ApplicationRecord
   has_one :purchase
   mount_uploader :photo, PhotoUploader
   validates :media_link, format: { with: /.*:album:.*/ }
+
+  def sold?
+    !purchase.nil?
+  end
 end

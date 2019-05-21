@@ -9,6 +9,7 @@
 
   <div class="cards">
     <% @vinyls.each do |vinyl| %>
+    <% next if vinyl.sold? %>
       <%= link_to vinyl_path(vinyl) do %>
         <div class="card-full">
           <div class="card-full-infos">

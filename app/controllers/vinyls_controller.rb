@@ -50,7 +50,6 @@ class VinylsController < ApplicationController
     redirect_to vinyls_user_path(current_user)
   end
 
-
   private
 
   def find_vinyl

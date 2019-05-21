@@ -3,7 +3,7 @@
   <div class="vinyl">
     <div class= "vinyl-image">
       <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
-      <% if @vinyl.media_link %>
+      <% if @vinyl.media_link.length > 1 %>
         <iframe src="https://open.spotify.com/embed/album/<%= @vinyl.media_link.chars.last(22).join %>" frameborder="0" allowtransparency="true" height="80" allow="encrypted-media" style="margin-top:10px;"></iframe>
       <% end %>
 

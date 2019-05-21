@@ -4,45 +4,7 @@ class VinylsController < ApplicationController
 
   def index
     @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price))
-  #     @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-  #     if params[:query_name]
-  #       raise
-  #     end
-  #     # add this line if you want to have a seperate index
-  #     # for each individual user: .where(user: current_user)
-  #     if params[:query].present?
-  #       sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
-  #       @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
-  #     else
-  #       @vinyls = Vinyl.where(sold: false)
-  #     end
-  # # end
-
-    # if params[:query_name].present?
-    #     sql_query_name = "name ILIKE :query_name"
-    #     @vinyls = Vinyl.where(sql_query_name, query_name: "%#{params[:query_name]}%")
-    #   else
-    #     @vinyls = Vinyl.where(sold: false)
-    #   end
-
-    #   if params[:query_artist].present?
-    #     sql_query_artist = "artist ILIKE :query_artist"
-    #     @vinyls = Vinyl.where(sql_query_artist, query_artist: "%#{params[:query_artist]}%")
-    #   else
-    #     @vinyls = Vinyl.where(sold: false)
-    #   end
-
   end
-  # if params[:query_name].present? && params[:query_artist].present?
-  #     sql_query = " \
-  #       vinyls.name ILIKE :query_name \
-  #       AND vinyls.artist ILIKE :query_artist \
-  #       OR directors.first_name ILIKE :query \
-  #       OR directors.last_name ILIKE :query \
-  #     "
-  #     @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
-  #   else
-  #     @vinyls = Vinyl.all
 
   def show
   end

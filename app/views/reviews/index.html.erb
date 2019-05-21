@@ -1,6 +1,17 @@
-<h1>User Reviews For <%= @user.name %></h1>
+  <h1 class="text-center">User Reviews For <%= @user.first_name %></h1>
+  <div class="container">
+    <div class= "d-flex p-4 bg-light border-bottom align-items-center justify-content-between m-3">
+      <div>
+        <% @reviews.each do |review| %>
+          <h2><strong>Buyer ID</strong></h2>
+          <p><%= review.purchase.buyer_id %></p>
+          <h2><strong>Content</strong></h2>
+          <p><%= review.content %></p>
+          <h2><strong>Rating</strong></h2>
+          <p><%= review.rating %> stars</p>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<% @reviews.each do |review| %>
-  <p><%= @review.content %></p>
-  <p><%= @review.rating %></p>
-  <% end %>

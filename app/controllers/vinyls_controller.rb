@@ -33,25 +33,6 @@
     end
   end
 
-  def show
-  end
-
-  def new
-    @vinyl = Vinyl.new
-    authorize @vinyl
-  end
-
-  def create
-    @vinyl = Vinyl.new(vinyl_params)
-    @vinyl.seller = current_user
-    authorize @vinyl
-    if @vinyl.save
-      redirect_to vinyl_path(@vinyl)
-    else
-      render :new
-    end
-  end
-
   def edit
     authorize @vinyl
   end

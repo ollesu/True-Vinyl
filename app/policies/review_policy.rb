@@ -16,4 +16,8 @@ class ReviewPolicy < ApplicationPolicy
   def new?
     true
   end
+
+  def index?
+    true
+  end
 end

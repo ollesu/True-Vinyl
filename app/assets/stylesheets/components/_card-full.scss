@@ -5,6 +5,7 @@
   border-top-right-radius: 20px;
   border: 2px solid #F7CA2F;
   transition: 0.4s ease;
+  position: relative;
 }
 .card-full:hover {
   border: 2px solid #00BCD3;
@@ -35,8 +36,8 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-
-
+  text-decoration: none;
+  color: black;
 }
 
 .card-full-infos .card-full-user {
@@ -44,4 +45,20 @@
   right: 16px;
   top: -20px;
   width: 40px;
+  text-decoration: none;
+  color: black;
+}
+
+.vinyl-button {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  opacity: 0.8;
+}
+
+.vinyl-button-delete {
+  position: absolute;
+  bottom: 15px;
+  left: 90px;
+  opacity: 0.8;
 }

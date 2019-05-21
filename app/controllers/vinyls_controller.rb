@@ -1,20 +1,14 @@
-  class VinylsController < ApplicationController
+class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
   def index
-      @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-      # add this line if you want to have a seperate index
-      # for each individual user: .where(user: current_user)
-      if params[:query].present?
-        sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
-        @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
-      else
-        @vinyls = Vinyl.where(sold: false)
-      end
+    @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price))
+
   end
 
   def show
+    @user_vinyls = Vinyl.where(sold: false).where(seller: @vinyl.seller)
   end
 
   def new
@@ -42,44 +36,30 @@
     @purchase = Purchase.new
   end
 
-    def update
-      @vinyl.update(vinyl_params)
-      if @vinyl.save
-        redirect_to vinyl_path(@vinyl)
-      else
-        render :edit
-      end
+  def update
+    @vinyl.update(vinyl_params)
+    if @vinyl.save
+      redirect_to vinyl_path(@vinyl)
+    else
+      render :edit
     end
+  end
 
-    def order
-      @purchase = Purchase.new
-    end
-
-    def destroy
-      @vinyl.destroy
-    end
+  def destroy
+    @vinyl.destroy
+    redirect_to vinyls_user_path(current_user)
+  end
 
 
-    private
+  private
 
-    def find_vinyl
-      @vinyl = Vinyl.find(params[:id])
-      authorize @vinyl
-    end
+  def find_vinyl
+    @vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
+  end
 
-    def vinyl_params
-      params.require(:vinyl).permit(:name, :genre, :price, :artist, :year, :description,
-        :condition, :photo, :seller_id, :media_link)
-    end
+  def vinyl_params
+    params.require(:vinyl).permit(:name, :genre, :price, :artist, :year, :description,
+      :condition, :photo, :seller_id, :media_link)
+  end
 end
-
-
-
-
-
-
-
-
-
-
-

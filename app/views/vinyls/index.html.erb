@@ -1,34 +1,61 @@
 <div class="container" style="margin-bottom: 20px">
 
   <%= simple_form_for :search, url: vinyls_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="query" id="query" placeholder="<%= params[:query] %>" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <!-- <i class="fas fa-search"></i> --> <i class="fas fa-compact-disc"></i> Search vinyls
+  <div class="search-form-control form-group form-inline" >
+    <input class="form-control string required" id=input-1 type="text" name="named" id="query" placeholder="Title" onfocus="" onblur="" <%= params[:named] %> />
+    <input class="form-control string required" id=input-2 type="text" name="artist" id="artist" placeholder="Artist" placeholder="Title" onfocus="" onblur="" <%= params[:artist] %> />
+
+    <select name="genre" class="form-control string" id="drop-down">
+      <option  value="">Genre</option>
+      <option value="Avant-Garde">Avant-Garde</option>
+      <option value="Avant-Garde">Blues</option>
+      <option value="Classical">Classical</option>
+      <option value="Comedy/Spoken">Comedy/Spoken</option>
+      <option value="Country">Country</option>
+      <option value="Folk">Folk</option>
+      <option value="International">International</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Latin">Latin</option>
+      <option value="New Age">New Age</option>
+      <option value="Pop/Rock">Pop/Rock</option>
+      <option value="R&B">R&B</option>
+      <option value="Rap">Rap</option>
+      <option value="Raggae">Raggae</option>
+    </select>
+    <input class="form-control string required" id=input-3 type="text" name="min_price" id="min_price" placeholder="Min Price" placeholder="Title" onfocus="" onblur="" <%= params[:min_price] %> />
+    <input class="form-control string required" id=input-4 type="text" name="max_price" id="max_price" placeholder=" Max Price" placeholder="Title" onfocus="" onblur=""<%= params[:max_price] %> />
+    <button name="button" type="submit" class="btn btn-flat" id="search-button">
+     <i class="fas fa-compact-disc"></i> Search vinyls
     </button>
   </div>
 <% end %>
-
-  <% if params[:query] %>
-    <h1>Search results for <%= params[:query] %></h1>
-    <% else %>
-    <h1>Showing all records</h1>
-  <% end %>
+<br>
 
   <div class="cards">
+
     <% @vinyls.each do |vinyl| %>
-      <%= link_to vinyl_path(vinyl) do %>
-        <div class="card-full">
-          <div class="card-full-infos">
-            <div>
-              <h2><%= vinyl.name %></h2>
-              <p><%= vinyl.artist %></p>
+    <% next if vinyl.sold? %>
+        <%= link_to vinyl_path(vinyl) do %>
+          <div class="card-full">
+            <div class="card-full-infos">
+              <div>
+                <h2><%= vinyl.name %></h2>
+                <p><%= vinyl.artist %></p>
+                <% if vinyl.sold? %>
+                <p>Sold</p>
+                <% end %>
+              </div>
+              <h2 class="card-full-pricing">£ <%= vinyl.price %></h2>
             </div>
-            <h2 class="card-full-pricing">£ <%= vinyl.price %></h2>
+              <%= cl_image_tag vinyl.photo %>
           </div>
-            <%= cl_image_tag vinyl.photo %>
-        </div>
-      <% end %>
+       <% end %>
     <% end %>
   </div>
+
+  <br>
+  <div style= "text-align: center;">
+    <%= link_to "Back to all vinyls", vinyls_path(@vinyl), class: 'btn btn-flat', style: 'color:white;'%>
+  </div>
+  <br>
 </div>

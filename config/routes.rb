@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   resources :purchases, only: [:show] do
     resources :reviews, only: [:show, :new, :create]
   end
+
+  resources :users, only: [:show] do
+    member do
+      get "vinyls", to: "users#show_vinyls"
+    end
+  end
+  delete "vinyls/:id", to: "vinyls#destroy_vinyls"
 end

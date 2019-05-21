@@ -18,6 +18,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_vinyls
+    @user = current_user
+    authorize @user
+    # @user.vinyl = Vinyl.find(params[:vinyl_id])
+  end
+
+  # def destroy_vinyls
+  #   @vinyl = Vinyl.find(params[:id])
+  #   @vinyl.destroy
+  # end
+
     private
 
   def find_user

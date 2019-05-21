@@ -24,11 +24,6 @@ class UsersController < ApplicationController
     # @user.vinyl = Vinyl.find(params[:vinyl_id])
   end
 
-  # def destroy_vinyls
-  #   @vinyl = Vinyl.find(params[:id])
-  #   @vinyl.destroy
-  # end
-
     private
 
   def find_user

@@ -12,7 +12,7 @@
           <h2 class="card-full-pricing">£ <%= vinyl.price %></h2>
         </div>
           <%= link_to "Edit", edit_vinyl_path(vinyl), class: 'vinyl-button btn btn-primary' %>
-          <%= link_to "Delete", vinyls_user_path, method: :delete, class: 'vinyl-button-delete btn btn-primary' %>
+          <%= link_to "Delete", vinyl_path(vinyl), method: :delete, class: 'vinyl-button-delete btn btn-primary' %>
           <%= link_to vinyl_path(vinyl) do %>
             <%= cl_image_tag vinyl.photo, height: 350, width: 350, crop: :fill %>
             <% end %>
@@ -21,5 +21,3 @@
     <% end %>
   </div>
 </div>
-
-  <!-- link_to vinyl_path(vinyl) -->

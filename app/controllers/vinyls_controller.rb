@@ -76,6 +76,7 @@
 
     def destroy
       @vinyl.destroy
+      redirect_to vinyls_user_path(current_user)
     end
 
 

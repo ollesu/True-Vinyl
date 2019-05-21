@@ -22,3 +22,5 @@ module TrueVinyl
     # the framework and any gems in your application.
   end
 end
+
+# RSpotify::authenticate("bee16b8a97704bb89f3243b08b01ccac", "23089b2456da4e88958c8de2ec34c573")

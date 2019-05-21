@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     is_user_owner_or_admin?
   end
 
+  def show_vinyls?
+    true
+  end
+
   private
 
   def is_user_owner_or_admin?

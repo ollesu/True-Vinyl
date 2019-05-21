@@ -3,7 +3,7 @@
   <div class="vinyl">
     <div class= "vinyl-image">
       <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
-      <% if @vinyl.media_link %>
+      <% if @vinyl.media_link.length > 1 %>
         <iframe src="https://open.spotify.com/embed/album/<%= @vinyl.media_link.chars.last(22).join %>" frameborder="0" allowtransparency="true" height="80" allow="encrypted-media" style="margin-top:10px;"></iframe>
       <% end %>
 
@@ -53,10 +53,10 @@
         <hr>
       </div>
       <div>
+        <%= link_to user_path(@vinyl.seller) do %>
         <p><%= cl_image_tag @vinyl.seller.photo, class: "avatar-user-page"%></p>
-
-
-        <h3> <%= @vinyl.seller.first_name %></h3>
+        <h3><%= @vinyl.seller.first_name %></h3>
+        <% end %>
 
         <div style="color: #FA2B57">
           <i class="fas fa-star"></i>

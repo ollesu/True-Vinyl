@@ -59,7 +59,7 @@
         <% end %>
 
         <div style="color: #FA2B57">
-          <% if @vinyl.seller.reviews.nil? %>
+        <% if @user.reviews.count > 0 %>
             <% average_rating = 0 %>
             <% @vinyl.seller.reviews.each do |review| %>
               <% average_rating += review.rating %>
@@ -70,7 +70,7 @@
                 <i class="fas fa-star"></i>
               <% end %>
             </div>
-          <p><%= @vinyl.seller.reviews.count %> user reviews</p>
+          <p><i class="far fa-check-circle"></i> <%= @user.reviews.count %> reviews</p>
           <% else %>
           <p><i class="far fa-check-circle"></i> No reviews yet</p>
             <% end %>

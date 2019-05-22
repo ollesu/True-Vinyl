@@ -4,6 +4,9 @@
 
     <div class= "vinyl-image">
       <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+    <% if @vinyl.media_link %>
+        <iframe src="https://open.spotify.com/embed/album/<%= @vinyl.media_link.chars.last(22).join %>" frameborder="0" allowtransparency="true" height="80" allow="encrypted-media" style="margin-top:10px;"></iframe>
+      <% end %>
     </div>
 
     <div class="vinyl-description">
@@ -45,7 +48,6 @@
         <h2 style="color: #FA2B57"><strong>£<%= @vinyl.price %></strong></h2>
 
         <%= link_to "buy now", order_vinyl_path(@vinyl), class: 'btn btn-danger'%>
-
       </div>
       <div>
         <hr>
@@ -67,50 +69,32 @@
               <i class="fas fa-star"></i>
             <% end %>
           </div>
-        <p><%= @vinyl.seller.reviews.count %> user reviews</p>
-        <p>Selling since 2019</p>
+          <p><%= @vinyl.seller.reviews.count %> user reviews</p>
+          <p>Selling since 2019</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
    <br>
   <h3>Other items for sale by <%= @vinyl.seller.first_name %> </h3>
   <br>
 
   <div class="cards">
-
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
+      <% @user_vinyls.each do |vinyl| %>
+        <%= link_to vinyl_path(vinyl) do %>
+          <div class="card-full">
+            <div class="card-full-infos">
+              <div>
+                <h2><%= vinyl.name %></h2>
+                <p><%= vinyl.artist %></p>
+              </div>
+              <h2 class="card-full-pricing">£ <%= '%.2f' % vinyl.price %></h2>
+            </div>
+              <%= cl_image_tag vinyl.photo %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
-    </div>
-
-    <div class="card-full">
-      <div class="card-full-infos">
-        <div>
-          <h2>Vinyl Title</h2>
-          <p>Vinyl Artist</p>
-        </div>
-        <h2 class="card-full-pricing">£19.99</h2>
-      </div>
-      <%= image_tag "beatles.jpg" %>
-    </div>
-  </div>
 </div>

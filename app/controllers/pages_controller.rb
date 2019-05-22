@@ -3,6 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @vinyls = Vinyl.limit(6).order(created_at: :desc)
-
+    # test
   end
 end

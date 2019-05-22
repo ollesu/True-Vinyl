@@ -3,12 +3,12 @@ class VinylsController < ApplicationController
   before_action :find_vinyl, only: [:show, :edit, :destroy, :update, :order]
 
   def index
-    @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price))
+    @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price)).order(created_at: :desc)
 
   end
 
   def show
-    @user_vinyls = Vinyl.where(sold: false).where(seller: @vinyl.seller)
+    @user_vinyls = Vinyl.where(sold: false).where(seller: @vinyl.seller).order(created_at: :desc)
   end
 
   def new

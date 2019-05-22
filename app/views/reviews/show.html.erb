@@ -7,5 +7,10 @@
   <br>
   <h2 class="text-center"><%= @review.content %></h2>
   <br>
-  <h2 class="text-center"><%= @review.rating %> stars</h2>
+  <h2 class="text-center">
+    <% @review.rating.times do %>
+      <i class="fas fa-star" style="color: #FA2B57"></i>
+    <% end %>
 </div>
+
+

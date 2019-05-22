@@ -59,7 +59,7 @@
         <% end %>
 
         <div style="color: #FA2B57">
-        <% if @user.reviews.count > 0 %>
+        <% if @vinyl.seller.reviews.count > 0 %>
             <% average_rating = 0 %>
             <% @vinyl.seller.reviews.each do |review| %>
               <% average_rating += review.rating %>
@@ -70,12 +70,12 @@
                 <i class="fas fa-star"></i>
               <% end %>
             </div>
-          <p><i class="far fa-check-circle"></i> <%= @user.reviews.count %> reviews</p>
+          </div>
+          <p><i class="far fa-check-circle"></i> <%= pluralize @vinyl.seller.reviews.count, "review" %></p>
           <% else %>
           <p><i class="far fa-check-circle"></i> No reviews yet</p>
             <% end %>
-          </div>
-          <p>Selling since 2019</p>
+        <p><i class="far fa-calendar-alt"></i>    Selling since 2019</p>
         </div>
       </div>
     </div>

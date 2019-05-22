@@ -21,7 +21,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do
       get "vinyls", to: "users#show_vinyls"
+      # get "vinyls", to: ""
     end
   end
-  delete "vinyls/:id", to: "vinyls#destroy_vinyls"
+  # delete "vinyls/:id", to: "vinyls#destroy"
+
+  # I was trying out some stuff for marking vinyls as sold, please keep it.
+  # resources :users, only: [:show] do
+  #   member do
+  #     get "vinyls/:id", to: "vinyls#mark_as_sold"
+  #   end
+  # end
 end

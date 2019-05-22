@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def show_vinyls
     @user = current_user
     authorize @user
-    @vinyls.order(created_at: :desc)
+    @user.vinyls.order(created_at: :desc)
     # @user.vinyl = Vinyl.find(params[:vinyl_id])
   end
 

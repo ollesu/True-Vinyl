@@ -4,6 +4,19 @@ class VinylsController < ApplicationController
 
   def index
     @vinyls = policy_scope(Vinyl).filter(params.slice(:genre, :artist, :named, :min_price, :max_price)).order(created_at: :desc)
+#     @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+#     # add this line if you want to have a seperate index
+#     # for each individual user: .where(user: current_user)
+#     if params[:query].present?
+#       sql_query = "name ILIKE :query OR artist ILIKE :query OR description ILIKE :query"
+#       @vinyls = Vinyl.where(sql_query, query: "%#{params[:query]}%")
+#     else
+#       @vinyls = Vinyl.where(sold: false)
+#     end
+#   end
+
+#   def show
+#   end
 
   end
 
@@ -16,16 +29,16 @@ class VinylsController < ApplicationController
     authorize @vinyl
   end
 
-  def create
-    @vinyl = Vinyl.new(vinyl_params)
-    @vinyl.seller = current_user
-    authorize @vinyl
-    if @vinyl.save
-      redirect_to vinyl_path(@vinyl)
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @vinyl = Vinyl.new(vinyl_params)
+  #   @vinyl.seller = current_user
+  #   authorize @vinyl
+  #   if @vinyl.save
+  #     redirect_to vinyl_path(@vinyl)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def edit
     authorize @vinyl

@@ -3,10 +3,14 @@
   <div class="vinyl">
 
     <div class= "vinyl-image">
-      <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+      <% if @vinyl.photo.nil? %>
+        NO IMAGE
+      <% else %>
+        <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
+      <% end %>
     <% if @vinyl.media_link.length > 2 %>
         <iframe src="https://open.spotify.com/embed/album/<%= @vinyl.media_link.chars.last(22).join %>" frameborder="0" allowtransparency="true" height="80" allow="encrypted-media" style="margin-top:10px;"></iframe>
-      <% end %>
+    <% end %>
     </div>
 
     <div class="vinyl-description">
@@ -52,10 +56,15 @@
       </div>
       <div>
         <%= link_to user_path(@vinyl.seller) do %>
-        <p><%= cl_image_tag @vinyl.seller.photo, class: "avatar-user-page"%></p>
-        <h3><%= @vinyl.seller.first_name %></h3>
+
+        <% if @vinyl.photo.nil? %>
+          NO IMAGE
+        <% else %>
+          <p><%= cl_image_tag @vinyl.seller.photo, class: "avatar-user-page"%></p>
         <% end %>
 
+        <h3> <%= @vinyl.seller.first_name %></h3>
+        <% end %>
         <div style="color: #FA2B57">
         <% if @vinyl.seller.reviews.count > 0 %>
             <% average_rating = 0 %>

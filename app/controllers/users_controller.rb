@@ -9,9 +9,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    authorize @user
     @user.update(vinyl_params)
     if @user.save
+      authorize @user
       redirect_to user_path(@user)
     else
       render :edit

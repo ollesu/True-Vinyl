@@ -41,8 +41,11 @@
     <div class="profile-box">
       <div>
         <h2 style="color: #FA2B57"><strong>£<%= @vinyl.price %></strong></h2>
-
-        <%= link_to "buy now", order_vinyl_path(@vinyl), class: 'btn btn-danger', style: "width: 80%;" %>
+        <% if @vinyl.sold = true %>
+          <button type="button" class="btn btn-secondary" disabled>Already sold</button>
+          <% else %>
+          <%= link_to "buy now", order_vinyl_path(@vinyl), class: 'btn btn-danger', style: "width: 80%;" %>
+        <% end %>
       </div>
       <div>
         <hr>

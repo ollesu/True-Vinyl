@@ -57,17 +57,21 @@
         <% end %>
 
         <div style="color: #FA2B57">
-          <% average_rating = 0 %>
-          <% @vinyl.seller.reviews.each do |review| %>
-            <% average_rating += review.rating %>
-          <% end %>
-          <% final = average_rating / @vinyl.seller.reviews.count %>
-          <div style="color: #FA2B57">
-            <% final.times do %>
-              <i class="fas fa-star"></i>
+          <% if @vinyl.seller.reviews.nil? %>
+            <% average_rating = 0 %>
+            <% @vinyl.seller.reviews.each do |review| %>
+              <% average_rating += review.rating %>
             <% end %>
-          </div>
-        <p><%= @vinyl.seller.reviews.count %> user reviews</p>
+            <% final = average_rating / @vinyl.seller.reviews.count %>
+            <div style="color: #FA2B57">
+              <% final.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+          <p><%= @vinyl.seller.reviews.count %> user reviews</p>
+          <% else %>
+          <p><i class="far fa-check-circle"></i> No reviews yet</p>
+            <% end %>
         <p>Selling since 2019</p>
       </div>
     </div>

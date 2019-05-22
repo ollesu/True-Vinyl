@@ -29,16 +29,16 @@ class VinylsController < ApplicationController
     authorize @vinyl
   end
 
-  # def create
-  #   @vinyl = Vinyl.new(vinyl_params)
-  #   @vinyl.seller = current_user
-  #   authorize @vinyl
-  #   if @vinyl.save
-  #     redirect_to vinyl_path(@vinyl)
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @vinyl = Vinyl.new(vinyl_params)
+    @vinyl.seller = current_user
+    authorize @vinyl
+    if @vinyl.save
+      redirect_to vinyl_path(@vinyl)
+    else
+      render :new
+    end
+  end
 
   def edit
     authorize @vinyl

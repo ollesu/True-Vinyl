@@ -14,7 +14,8 @@
       <div>
         <p><%= cl_image_tag(@user.photo.url, class: "avatar-bordered", :width => 100, :height => 100) %></p>
         <hr>
-         <% average_rating = 0 %>
+        <% if @user.reviews.count > 0 %>
+          <% average_rating = 0 %>
           <% @user.reviews.each do |review| %>
               <% average_rating += review.rating %>
           <% end %>
@@ -24,7 +25,10 @@
             <i class="fas fa-star"></i>
           <% end %>
           </div>
-        <p><i class="far fa-check-circle"></i>    <%= @user.reviews.count %> reviews</p>
+          <p><i class="far fa-check-circle"></i>    <%= @user.reviews.count %> reviews</p>
+          <% else %>
+          <p><i class="far fa-check-circle"></i> No reviews yet</p>
+          <% end %>
 
         <!-- @user.created_at -->
         <p><i class="far fa-calendar-alt"></i>    Selling since 2019</p>

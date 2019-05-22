@@ -43,6 +43,11 @@
               <div>
                 <h2><%= vinyl.name %></h2>
                 <p><%= vinyl.artist %></p>
+                <% if vinyl.sold? %>
+                    <p>Sold</p>
+                <% else %>
+                  <p>Not sold</p>
+                <% end %>
               </div>
               <h2 class="card-full-pricing">£ <%= vinyl.price %></h2>
             </div>

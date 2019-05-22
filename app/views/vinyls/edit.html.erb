@@ -13,8 +13,9 @@
       <%= f.input :condition, label: "Condition", collection: ["New", "Used - Like New", "Used - Very Good", "Used - Good", "Used - Acceptable"]%>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "btn btn-primary", style: "margin-bottom: 10px;"  %>
       <% end %>
+      <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, class: 'btn btn-danger', style: "margin-bottom: 10px;" %>
     </div>
   </div>
 </div>

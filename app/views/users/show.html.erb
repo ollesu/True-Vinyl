@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 10px; margin-bottom: 20px">
+<div class="container" style="margin-top: 90px; margin-bottom: 20px">
 
   <div class="user">
     <div class="user-description">
@@ -25,7 +25,7 @@
             <i class="fas fa-star"></i>
           <% end %>
           </div>
-          <p><i class="far fa-check-circle"></i>    <%= @user.reviews.count %> reviews</p>
+         <p><i class="far fa-check-circle"></i> <%= pluralize @user.reviews.count, "review" %></p>
           <% else %>
           <p><i class="far fa-check-circle"></i> No reviews yet</p>
           <% end %>

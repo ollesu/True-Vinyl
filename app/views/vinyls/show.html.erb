@@ -4,7 +4,7 @@
 
     <div class= "vinyl-image">
       <%= cl_image_tag @vinyl.photo, height: 300, width: 300, crop: :fill %>
-    <% if @vinyl.media_link %>
+    <% if @vinyl.media_link.length > 2 %>
         <iframe src="https://open.spotify.com/embed/album/<%= @vinyl.media_link.chars.last(22).join %>" frameborder="0" allowtransparency="true" height="80" allow="encrypted-media" style="margin-top:10px;"></iframe>
       <% end %>
     </div>
@@ -41,7 +41,7 @@
     <div class="profile-box">
       <div>
         <h2 style="color: #FA2B57"><strong>£<%= @vinyl.price %></strong></h2>
-        <% if @vinyl.sold = true %>
+        <% if @vinyl.sold? %>
           <button type="button" class="btn btn-secondary" disabled>Already sold</button>
           <% else %>
           <%= link_to "buy now", order_vinyl_path(@vinyl), class: 'btn btn-danger', style: "width: 80%;" %>

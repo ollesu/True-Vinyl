@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+True Vinyl is a  marketplace for vinyls our team designed and shipped to production on Heroku within one week for Le Wagon. 
+
+It's built on Ruby on Rails, using Javascript, PostgreSQL, Bootstrap and HTML & CSS. 
